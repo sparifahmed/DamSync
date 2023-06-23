@@ -7,7 +7,7 @@ namespace DamSync.Terminal
     {
         public void StartSyncService()
         {
-            Console.WriteLine("Sync Service.......................");
+
         }
     }
 }
