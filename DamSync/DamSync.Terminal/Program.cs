@@ -31,12 +31,12 @@ namespace DamSync.Terminal
                     {
                         services.AddSingleton<ISyncService, SyncService>();
                         services.AddSingleton<App>();
-                    })
-                    .UseSerilog((context, services, configuration) => configuration
-    .ReadFrom.Configuration(context.Configuration)
-    .ReadFrom.Services(services)
-    .Enrich.FromLogContext()
-    .WriteTo.File($"report-{DateTimeOffset.UtcNow.ToString("yyyy-MM-dd-HH-mm-ss")}.txt", restrictedToMinimumLevel: LogEventLevel.Warning));
+                    });
+    //                .UseSerilog((context, services, configuration) => configuration
+    //.ReadFrom.Configuration(context.Configuration)
+    //.ReadFrom.Services(services)
+    //.Enrich.FromLogContext()
+    //.WriteTo.File($"report-{DateTimeOffset.UtcNow.ToString("yyyy-MM-dd-HH-mm-ss")}.txt", restrictedToMinimumLevel: LogEventLevel.Warning));
             }
 
 
