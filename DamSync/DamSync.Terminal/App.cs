@@ -14,10 +14,26 @@ namespace DamSync.Terminal
             _syncService = syncService;
         }
 
-        public void Run(string[] args)
+        public async void Run(string[] args)
         {
             Console.WriteLine(Environment.MachineName);
-            DamManager.TestConnection(Environment.MachineName);
+
+            var damManager = new DamManager();
+
+            var isConnected = await damManager.TestConnection(Environment.MachineName);
+
+            if(isConnected)
+            {
+                Console.WriteLine("Connected to server");
+
+                damManager.GetSyncJobs(Environment.MachineName);
+
+                // _syncService.StartSyncService();
+            }
+            else
+            {
+                Console.WriteLine("Server connection failed");
+            }
 
             // _logger.LogDebug("Hello");
             // _syncService.StartSyncService();

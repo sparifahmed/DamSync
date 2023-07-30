@@ -1,4 +1,5 @@
 ﻿using DamSync.Terminal.Interfeces;
+using DamSync.Terminal.Managers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
@@ -8,7 +9,7 @@ namespace DamSync.Terminal
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             using IHost host = CreateHostBuilder(args).Build();
             using var scope = host.Services.CreateScope();
