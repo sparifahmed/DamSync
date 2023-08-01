@@ -1,7 +1,9 @@
-﻿namespace DamSync.Terminal.Interfeces
+﻿using DamSync.Terminal.ResponseModels;
+
+namespace DamSync.Terminal.Interfeces
 {
     public interface IApiService
     {
-        void GetSyncJobs(string machineId);
+       Task<List<SyncJobModel>> GetSyncJobs(string machineId);
     }
 }

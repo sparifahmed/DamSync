@@ -9,7 +9,7 @@ namespace DamSync.Terminal.Managers
 {
     public class DamManager : IApiService
     {
-        public async void GetSyncJobs(string machineName)
+        public async Task<List<SyncJobModel>> GetSyncJobs(string machineName)
         {
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("X-ApiKey", "MReCg7XzMPa9R5QqMgmwcQ8fDs7QpYlMcRltXpXiTbkmO/wx6FXG7lpDBmYWy5wUhY66POH1XgbfY9D9GT6JsiKcaFdzDT0LRC4WvrwrNAOfdfiLOZD7J/biSnzonfBM");
@@ -26,6 +26,7 @@ namespace DamSync.Terminal.Managers
             string pagedListItemsRef = await response.Content.ReadAsStringAsync();
             var pagedListItemsResult = JsonConvert.DeserializeObject<JobListResponseModel>(pagedListItemsRef);
 
+            return pagedListItemsResult.Jobs;
         }
 
         public async Task<bool> TestConnection(string machineName)
